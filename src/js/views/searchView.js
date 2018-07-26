@@ -6,6 +6,15 @@ export const clearInput = () => {
     elements.searchInput.value = '';
 };
 
+export const selection = id => {
+    const resultsArr = Array.from(document.querySelectorAll('.results__link'));
+    resultsArr.forEach(el => {
+       el.classList.remove('results__link--active'); 
+    });
+    
+    document.querySelector(`.results__link[href="#${id}"]`).classList.add('results__link--active');
+};
+
 export const clearResults = () => {
     elements.searchResList.innerHTML = '';
     elements.searchResPages.innerHTML = '';
@@ -20,7 +29,7 @@ acc: 15 / acc + cur.length = 18 / newTitle = ['Pasta', 'with', 'tomato', 'and']
 acc: 18 / acc + cur.length = 24 / newTitle = ['Pasta', 'with', 'tomato', 'and', 'spinach']
 */
 
-const limitRecipeTitle = (title, limit = 17) => {
+export const limitRecipeTitle = (title, limit = 17) => {
     const newTitle = [];
     if(title.length > limit) {
         title.split(' ').reduce((acc, cur) => {
